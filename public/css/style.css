@@ -1,0 +1,371 @@
+/************************************
+ STYLES
+************************************/
+/* Main Styles */
+
+h1 {
+  font-size: 17vmin;
+  line-height: 17vmin;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h1, h2, #logo {
+  font-family: degular,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 10vmin;
+  line-height: 10vmin;
+}
+
+h3, h4 {
+  margin-bottom: .5rem;
+}
+
+h3, h4, h5, h6, p {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a[role=button]{
+  width: 100%;
+}
+
+a[href="/dashboard"] {
+  margin-bottom: var(--spacing);
+}
+
+body>main {
+  /* padding: 5vmin 0; */
+  flex: 1 0 auto;
+}
+
+.flex-container {
+  flex-direction: column;
+}
+  
+/* LAYOUT - HOMEPAGE MOBILE FIRST */
+
+.homepage .flex-container {
+  justify-content: center;
+}
+  
+.homepage img {
+  width:100%
+}
+
+.homepage h3 {
+  margin: 5% 0 2% 0;
+}
+
+.homepage a {
+  width: 100%;
+}
+
+.input-header {
+  flex-direction: row;
+}
+
+#guestAccount {
+  display: inline-block;
+  padding-top: 3vmin;
+}
+  
+/* What is this doing? - brittany */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.link-to-project{
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+body>header {
+  padding: .75rem 0;
+  padding-right: var(--spacing);
+  padding-left: var(--spacing);
+}
+
+header a {
+  color: var(--contrast);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+#logo {
+  font-size: 8vmin;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* FONT AWESOME ICONS */
+
+.fas.fa-check-circle {
+  color: #8FD14F;
+}
+
+.fa-sharp.fa-solid.fa-xmark {
+  color: #fff;
+}
+  
+/* is now better? :)
+.signup-form-desktop {  
+  justify-content:right;
+  width:40%;
+} 
+  
+  
+.signup-form-desktop input {
+  flex-direction: column;
+}  */
+  
+/* img {
+  width:60%
+} */
+  
+.primary-black-btn {
+    background-color: black;
+    border-color: black;
+}
+  
+  .secondary-white-btn {
+    background-color: white;
+    color:black;
+    border-color: black;
+  }
+  
+  .flex-container {
+    display:flex;
+  }
+  
+  /* strong{
+  color: rgb(241, 71, 37)
+  } */
+  
+  #team-members{
+  display: flex;
+  flex-wrap: wrap;
+  }
+  
+  .member{
+  list-style-type: none;
+  }
+  
+  #delete-project-button{
+  background-color: #F67D66;
+  border-color: #F67D66;
+  
+  }
+  
+  #delete-project-button:hover{
+  background-color: rgb(241, 71, 37, .7);
+  border-color: rgb(241, 71, 37, .7);
+  color: white;
+  }
+
+  
+  #mark-complete-button{
+  background-color: #F0F8C5;
+  border-color: #F0F8C5;
+  color: #000;
+  margin-top: 2rem;
+  }
+  
+  #mark-complete-button:hover{
+  background-color: rgb(206, 231, 65, .3);
+  border-color: rgb(206, 231, 65, .3);
+  color: #000;
+  }
+
+  #mark-complete-button:focus {
+    background-color: rgb(206, 231, 65, .3);
+  }
+
+  #mark-complete-button .fas.fa-check-circle,
+  #delete-project-button .fa-sharp.fa-solid.fa-xmark {
+    vertical-align: middle;
+    padding-left: .6rem;
+    font-size: 1.25rem;
+  }                                             
+  
+  /* .partialHeader{
+    margin: 0;
+    padding: 0;
+  } */
+  
+  /* .signUpForm {
+  margin: 0 auto;
+  }
+  
+  .signUpButton {
+  width: 40%;
+  margin: 0 auto;
+  }
+  
+  .alignCenter {
+  text-align: center;
+  } */
+
+body>footer {
+  /* background-color: var(--contrast); */
+  color: var(--contrast);
+  font-family: 'Source Code Pro', monospace;
+  font-size: .8rem;
+  text-align: right;
+  padding: 1rem 1.5rem;
+}
+
+footer>span>a {
+  color: var(--contrast)
+}
+
+  .alignRight {
+  text-align:right;
+  color: black;
+  margin: auto 0;
+  }
+  
+  /* PROJECTS DASHBOARD LAYOUT */
+  .container.dashboard .headings {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container.dashboard h3 {
+    font-size: 8vmin;
+    flex-basis: 100%;
+  }
+
+  .container.dashboard .headings>span {
+    font-size: 6vmin;
+  }
+
+  /* article {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin: 3vmin 0;
+    padding: 5vmin;
+  } */
+
+  article p {
+    width: 100%;
+  }
+
+  article h4 {
+    font-size: 110%;
+  }
+
+  article p, article h4 {
+    color: #374956;
+  }
+  
+  article h4.dueDate {
+    width: 100%;
+    text-align: right;
+    place-self: center;
+    grid-area: 1 / 2 / span 2 / span 1;
+  }
+
+  article > * {
+    margin-bottom: .6rem;
+  }
+
+   /* Project Due Date Styling */
+
+   .alert {
+    background-color: #FEEEB6;
+  }
+
+  .alert .dueDate {
+    color: #B58F00;
+  }
+
+  .completed {
+    background-color: #F0F8C5;
+  }
+
+  .completed .fas.fa-check-circle {
+    width: 100%;
+    font-size: 2rem;
+    text-align: right;
+    place-self: center;
+    grid-area: 1 / 2 / span 2 / span 1;
+    margin: 0;
+  }
+
+  .neutral {
+    background-color: #D5EBFC;
+  }
+
+  .neutral .dueDate {
+    color: #2D9BF0;
+  }
+
+  .warning {
+    background-color: #FBC7BD;
+  }
+
+  .warning .dueDate {
+    color: #F24726;
+  }
+
+  /* hgroup-flex-container {
+    display:flex;
+    flex-direction: column;
+  } */
+  /* #add-project-small-btn {
+    width:30%;
+  } */
+
+  /* DESKTOP VIEWS */
+  @media all and (min-width: 960px) {
+
+    /* HOMEPAGE VIEW */
+    
+    .homepage h1 {
+      font-size: 19vmin;
+      text-align: center;
+    }
+    
+    .homepage .flex-container {
+      align-items: center;
+      flex-direction: row;
+      gap: 1rem;
+    }
+    
+    .homepage img {
+      width: 50%;
+    }
+
+    .signup-img{
+      aspect-ratio: 1 / 1;
+      height: 10vw;
+      object-fit: contain;
+    }
+  
+    /* ADD PROJECT VIEW */
+  
+    
+  } 

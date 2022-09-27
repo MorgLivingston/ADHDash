@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+  <title>Projects</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <%- include('partials/header') %>
+
+    <!-- Main container -->
+    <main class="container dashboard">
+        <h2>Projects</h2>
+        <!-- <img src="/assets/dashboard-mail.png" alt="lamp" class ="signup-img" width="100" height="100"> -->
+        <div class="headings">
+          <h3>Hi, <%= user.firstName || user.username %>!</h3>
+          <span> <%= `Today is ${new Date().toLocaleDateString([], { weekday: 'long' })},${String.fromCharCode(160)}` %></span>
+          <span><%= new Date().toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' }) %></span>
+        </div>
+        <a href="/dashboard/addProject" role="button" class="contrast outline">+ Add Project</a>
+
+        <% projectData.forEach( el => { %>
+          <a class='link-to-project' href="/dashboard/project?_id=<%= el._id %>">
+            <% if (el.status === true) { %><article class="completed">
+              <% } else if(Math.floor((el.dueDate - new Date())/86400000)>5) { %><article class="neutral">
+                <% } else if (Math.floor((el.dueDate - new Date())/86400000)>=2) { %><article class="alert">
+                  <% } else { %><article class="warning">
+                    <% } %>
+            <h4 class="projectTitle" data-id='<%=el._id%>'><%= el.title %></h4>
+
+            <h4 class='<%= el.status === true ? 'fas fa-check-circle' : 'dueDate' %>'><%= el.status === true ? '' : el.dueDate.toLocaleDateString([], { month: 'short',
+              day: '2-digit', timeZone: 'UTC' }) %></h4>
+
+            <p><%= el.description.length > 40 ? el.description.slice(0,40) + '...' : el.description %></p>
+
+          </article>
+        </a>
+        <% }) %>
+    </main>
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+</body>
+</html>

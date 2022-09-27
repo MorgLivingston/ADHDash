@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <%- include('partials/head') %>
+      <title>Project Details</title>
+    </head>    
+    <body>
+
+        <%- include('partials/header') %>
+
+      <main class='container flex-container'>
+        <div>
+          <h2><%= projectData.title %></h2>
+          <h3>Deadline: <%= projectData.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit', timeZone:'UTC'}) %></h3>
+          <h4>Description:</h4>
+          <p><%= projectData.description %></p>
+        </div>
+      
+        <div data-id='<%=projectData._id%>'>
+          <button id='mark-complete-button'>
+            Completed<i class="fas fa-check-circle"></i>
+          </button>
+          <a href='/dashboard' role='button' class='contrast outline' id='back-to-projects'>Back to Dashboard</a>
+          <button id='delete-project-button' class='delete-project'>
+            Delete<i class="fa-sharp fa-solid fa-xmark"></i>
+          </button> 
+          <!-- Button to trigger the modal -->
+<button class="contrast"
+data-target="modal-example"
+onClick="toggleModal(event)">
+Difficulties / Distractions Notes
+</button>
+
+<!-- Modal -->
+<dialog id="modal-example">
+<article class="container">
+  <a href="#close"
+    aria-label="Close"
+    class="close"
+    data-target="modal-example"
+    onClick="toggleModal(event)">
+  </a>
+  <h3>What went wrong / what could you do better?</h3>
+  <form>
+    <label for="notes">
+      Notes on your distractions / difficulties working on project
+      <input type="text" id="distractions" name="distractions" placeholder="leave a note for yourself" required>
+    </label>
+  </form>
+  <footer>
+    <a href="#cancel"
+      role="button"
+      class="secondary"
+      data-target="modal-example"
+      onClick="toggleModal(event)">
+      Cancel
+    </a>
+    <a href="#confirm"
+      role="button"
+      data-target="modal-example"
+      onClick="toggleModal(event)">
+      Confirm
+    </a>
+  </footer>
+</article>
+</dialog>
+        </div>
+      
+      </main>
+
+      <%- include('partials/footer') %>
+      <script src='/js/project.js'></script>
+
+    </body>
+</html>

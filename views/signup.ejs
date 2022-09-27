@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head') %>
+  <title>Branches Sign Up</title>
+</head>
+
+<body>
+
+<%- include('partials/headerSignUp') %>
+
+  <section class="container">
+    <div class = "flex-container input-header">
+      <h2>Sign Up</h2>
+    </div>
+    <form action="/signup" method="post" class='signUpForm'>
+      <label for="First Name">First Name</label>
+      <input type="text" name="firstName">
+      <label for="Last Name">Last Name</label>
+      <input type="text" name="lastName">
+      <label for="Email Address">Email Address</label>
+      <input type="email" name="email">
+      <label for="Username">Username</label>
+      <input type="text" name="username">
+      <label for="Password">Password</label>
+      <input type="password" name="password">
+      <button type="submit" class='contrast'>Sign Up</button>
+    </form>
+    <a href="/" role="button" class="contrast outline">Back to Login</a>
+  </section>
+  
+<%- include('partials/footer') %>
+
+</body>
+
+</html>
+

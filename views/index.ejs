@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+  <title>ADHDash</title>
+</head>
+
+<body>
+
+  <main class="container homepage">
+    <h1 class="spoof-medium-ss02">ADHDash</h1>
+    <div class="flex-container">
+
+      <img src="/assets/FlagDash.webp" class="contrast" width="500" height="500">
+
+      <div>
+        <form action="/login" method = "POST" name="login">
+          <h3> task oriented 
+            dashboard</h3>
+            <h6>Help find your focus and keep track of your distractions
+              to prevent wasted time in the future!</h6>
+          <label for="username">
+            Username
+            <input type="text" id="username" name="username" required>
+          </label>
+
+          <label for="password">
+            Password
+            <input type="password" id="password" name="password" required>
+          </label>
+
+          <!-- Buttons -->
+          <button type="login" class="contrast">Login</button>
+        </form>
+        <a href="/signup" role="button" class="contrast outline">Signup</a>
+        <!-- <a class="contrast" id="guestAccount" role="link">Use a guest account</a> -->
+      </div>
+    </main>
+  <!-- Footer -->
+  <%- include('partials/footer') %>
+  <script src="js/main.js"></script>  
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+  <title>Add Task</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <%- include('partials/header') %>
+
+  <main class="container">
+      <h2>Add Task</h2>
+      <form action="/projects/addProject" method="POST">
+        <label for="title">
+          Task
+          <input type="text" id="title" name="title" placeholder="Task Item" required>
+        </label>
+
+        <label for="dueDate">
+          Start Date
+        <input type="date" id="dueDate" name="dueDate" required>
+        </label>
+
+        
+
+          <!--<details role="list">
+            <summary aria-haspopup="listbox">Team Members</summary>
+            <ul role="listbox">
+              <li>
+                <label>
+                  <input type="checkbox">
+                  Bob (signed in user)
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  Other Team Member
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox">
+                  Other Team Member
+                </label>
+              </li>
+            </ul>
+          </details> -->
+
+        <label for="description">
+          Ideas to keep you focused
+          <textarea type="text" id="description" name="description" placeholder="Some actions you can put in place to stay on track."
+            required></textarea>
+        </label>
+
+        <button type="submit" class="contrast">+ Add Task</button>
+      </form>
+      <a href="/dashboard" role="button" class="contrast outline">Back to Dashboard</a>
+  </main>
+  <!-- Footer -->
+  <%- include('partials/footer') %>
+</body>
+
+</html>
