@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme=“lofi” lang="en">
 <head>
   <%- include('partials/head') %>
   <title>Projects</title>
@@ -9,11 +9,105 @@
   <!-- Header -->
   <%- include('partials/header') %>
 
-    <!-- Main container -->
-    <main class="container dashboard">
-        <h2>Projects</h2>
+  <div class="flex flex-row">
+    <!--User Info -->
+      <div class="card w-96 py-3 bg-base-100 shadow-xl basis-1/4">
+        <div class="card-body">
+          <h2 class="card-title"><%= user.firstName || user.username %></h2>
+          <p><%= new Date().toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' }) %></p>
+        </div>
+      </div>
+
+
+      <!--Stat area -->
+      <div class="stats shadow basis-1/2">
+  
+        <div class="stat place-items-center">
+          <div class="stat-title">Total Tasks</div>
+          <div class="stat-value">3</div>
+        </div>
+        
+        <div class="stat place-items-center">
+          <div class="stat-title">In Progress</div>
+          <div class="stat-value">2</div>
+        </div>
+        
+        <div class="stat place-items-center">
+          <div class="stat-title">Completed</div>
+          <div class="stat-value">1</div>
+        </div>
+
+        <div class="stat place-items-center">
+          <div class="stat-title">Est vs Actual Hrs</div>
+          <div class="stat-value">10 / 48</div>
+        </div>
+        
+      </div>
+<!-- Add Task Button-->
+      <div class="grid gap-4 ml-4 content-evenly">
+      <a class=" btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" href="/dashboard/addProject" role="button">+ Add Task</a>
+      <a class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" href="/dashboard/addProject" role="button">+ Add Distraction</a>
+      </div>
+  </div>
+    <!-- <div
+      class="px-4 py-3 mb-8 mt-8 bg-white rounded-lg shadow-md dark:bg-gray-800 place-content-around"> Hey <%= user.firstName || user.username %></div>
+    <span> <%= `Today is ${new Date().toLocaleDateString([], { weekday: 'long' })},${String.fromCharCode(160)}` %></span> -->
+    <!-- <div><%= new Date().toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' }) %></div> --> 
+
+    
+
+
+
+    <div class="overflow-x-auto w-full">
+      <table class="table w-full">
+        <!-- head -->
+        <thead>
+          <tr>
+            <!-- <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th> -->
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          <tr>
+            <!-- <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th> -->
+            <% projectData.forEach( el => { %>
+            <td>
+              <div class="flex items-center space-x-3">
+                <div>
+                  <div class="font-bold"><%= el.title %></div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <%= el.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit', timeZone:'UTC'}) %>
+              <br>
+              <span class="badge badge-ghost badge-sm">Estimated Time</span>
+            </td>
+            <td><% if (el.status === true) { %><div class=" bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Complete</div>
+                <% } else { %><div class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">In Progress</div>
+                <% } %></td>
+            <th>
+              <div class="btn btn-ghost btn-xs"><a class='link-to-project' href="/dashboard/project?_id=<%= el._id %>">details</a></button>
+            </th>
+          </tr>
+          <% }) %>
+
+
+        <!-- <h2>Projects</h2> -->
         <!-- <img src="/assets/dashboard-mail.png" alt="lamp" class ="signup-img" width="100" height="100"> -->
-        <div class="headings">
+        <!-- <div class="headings">
           <h3>Hi, <%= user.firstName || user.username %>!</h3>
           <span> <%= `Today is ${new Date().toLocaleDateString([], { weekday: 'long' })},${String.fromCharCode(160)}` %></span>
           <span><%= new Date().toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' }) %></span>
@@ -37,8 +131,8 @@
           </article>
         </a>
         <% }) %>
-    </main>
+    </main> -->
     <!-- Footer -->
-    <%- include('partials/footer') %>
+    <!-- <%- include('partials/footer') %> -->
 </body>
 </html>
