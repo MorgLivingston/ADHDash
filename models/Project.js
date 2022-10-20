@@ -1,6 +1,7 @@
 const { ObjectId } = require('mongodb')
 const mongoose = require('mongoose')
 const User = require('./User')
+const Journal = require('./Journal')
 
 // from the proposed parameters, not included are:
 // Color label (generate based on due date)
@@ -10,7 +11,6 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: String,
   startDate: {
     type: Date,
     required: false // changing to false for now as we don't have a field in addProject and aren't leveraging it
@@ -27,10 +27,20 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  teamMembers: {
+  estimatedTime: {
+    type: Number,
+    required: true
+  },
+  TotalTime: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  description: {
     type: String,
-    required: false,
-  }
+    required: true
+  },
+  
 })
 
 module.exports = mongoose.model('Project', ProjectSchema)

@@ -20,7 +20,7 @@ module.exports = {
                 title: req.body.title,
                 description: req.body.description, 
                 dueDate: req.body.dueDate,
-                teamMembers: req.body.teamMembers,
+                estimatedTime: req.body.estimatedTime,
                 status: false,
                 userId: req.user.id,
             })
@@ -32,30 +32,32 @@ module.exports = {
     },
     markComplete: async (req, res) => {
         try {
-            await Project.findOneAndUpdate({_id:req.body.id}, {
-                status: true
+            await Project.findOneAndUpdate({_id:req.params.id}, {
+                status: true,
+                TotalTime: req.body.TotalTime,
             })
             console.log('Completed Task')
-            res.json('Completed Task')
+            res.redirect('/dashboard')
+            
         } catch (err) {
             console.log(err)
         }
     },
-    markIncomplete: async (reeq, res) => {
-        try {
-            await Project.findOneAndUpdate({_id:req.body.id}, {
-                completed: false
-            })
-            console.log('Incompleted Task')
-            res.json('Incompleted Task')
-        } catch (err) {
-            console.log(err)
-        }
-    },
+    // markIncomplete: async (reeq, res) => {
+    //     try {
+    //         await Project.findOneAndUpdate({_id:req.body.id}, {
+    //             status: false
+    //         })
+    //         console.log('Incompleted Task')
+    //         res.json('Incompleted Task')
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // },
     deleteProject: async (req, res) => {
-        console.log(req.body.id)
+        console.log(req.params.id)
         try {
-            await Project.deleteOne({_id: req.body.id})
+            await Project.deleteOne({_id:req.params.id})
             console.log('Deleted Project')
             res.redirect('/dashboard')
         } catch (error) {

@@ -43,10 +43,10 @@
                           </label>
                           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="password" name="password" required>
                         </div>
-                          <button type="login" class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900">Login</button>
-                          <a href="/signup" role="button" class="inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900">Singup</a>
+                          <button type="login" class="btn modal-button">Login</button>
+                          <label for="signup-modal" class="btn modal-button">SIGNUP</label>
                       </form>
-                      
+                
                    </div>
                 </div>
               </div>
@@ -67,7 +67,50 @@
         <!-- <a href="/signup" role="button" class="contrast outline">Signup</a> -->
       </div>
     </main>
-  <!-- Footer -->
+
+    <!-- __--__SIGNUP MODAL__--__ -->
+  <input type="checkbox" id="signup-modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <div class="flex justify-center">
+        <div class="card w-96 bg-base-100 ">
+          <div class=" card-body">
+            <h2 class="text-3xl mb-2">Add Task</h2>
+            <form action="/signup" method="post">
+              <label for="First Name">First Name
+                <input class="input input-bordered w-full max-w-xs" type="text" id="firstName" name="firstName" placeholder="First Name" required>
+              </label>
+              <label for="Last Name"> Last Name
+              <input class="input input-bordered w-full max-w-xs" type="text" id="lastName" name="lastName" required>
+              </label>
+              <label for="Email Address">
+                Email Address
+              <input class="input input-bordered w-full max-w-xs" type="email" id="email" name="email" required>
+              </label>
+              <label for="Username">
+                Username
+                <input class="input input-bordered w-full max-w-xs" type="text" id="username" name="username"
+                  required>
+              </label>
+              <label for="Password">
+                Password
+                <input class="input input-bordered w-full max-w-xs" type="password" id="password" name="password"
+                  required>
+              </label>
+            <div class="card-actions justify-end">
+              <button class="btn mt-4">Signup</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-action">
+        <label for="signup-modal" class="btn">X</label>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
   <%- include('partials/footer') %>
   <script src="js/main.js"></script>  
 </body>

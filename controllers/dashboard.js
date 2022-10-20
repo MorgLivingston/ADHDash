@@ -16,19 +16,35 @@ module.exports = {
   //   res.render('dashboard.ejs', {projectData: projectData, user: req.user})
   // },
   getDash: async (req,res)=>{
-    console.log(req.user)
     try{
       const projects = await Project.find({userId:req.user.id}).sort({ status: 1, dueDate: 1 } )
-      res.render('dashboard.ejs', {projectData: projects, user: req.user})
-      console.log(projects)
+      const projectsInProgress = await Project.countDocuments({userId:req.user.id,status: false})
+      const projectsCompleted = await Project.countDocuments({userId:req.user.id,status: true})
+      console.log([projectsInProgress,projectsCompleted])
+      res.render('dashboard.ejs', {projectData: projects, user: req.user, projectsInProgress: projectsInProgress, projectsCompleted: projectsCompleted})
     }catch(err){
         console.log(err)
     }
   },
   addProject: (req, res) => {
     res.render('addProject.ejs')
-  }
+  },
+
+  markComplete: async (req, res) => {
+    try {
+        await Project.findOneAndUpdate({_id:req.body.id}, {
+            status: true
+        })
+        console.log('Completed Task')
+        res.json('Completed Task')
+    } catch (err) {
+        console.log(err)
+    }
+},
 };
+
+
+
 
 // const Todo = require('../models/Todo')
 
