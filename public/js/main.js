@@ -2,7 +2,7 @@
 document.querySelector('#guestAccount').addEventListener('click',fillLogin);
 
 function fillLogin(){
-    document.querySelector('#username').value = 'ADHDashGuest'
-    document.querySelector('#password').value = 'ADHDashGuest'
+    document.querySelector('#username').value = 'ADHDashguest'
+    document.querySelector('#password').value = 'guestpass'
     document.forms["login"].submit()
 }
