@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
     <head>
       <%- include('partials/head') %>
       <title>Project Details</title>
@@ -8,8 +8,8 @@
 
         <%- include('partials/header') %>
 
-      <main class='card w-96 bg-base-100 shadow-xl'>
-        <div class='card w-96 bg-base-100 shadow-xl'>
+      <main class='shadow-xl card w-96 bg-base-100'>
+        <div class='shadow-xl card w-96 bg-base-100'>
           <h2><%= projectData.title %></h2>
           <h3>Deadline: <%= projectData.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit', timeZone:'UTC'}) %></h3>
           <h4>Description:</h4>

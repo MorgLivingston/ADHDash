@@ -1,75 +1,89 @@
 <!DOCTYPE html>
-<html data-theme=“lofi” lang="en">
+<html data-theme="light" lang="en">
+
 <head>
   <%- include('partials/head') %>
-  <title>Dashboard</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
   <!-- Header -->
   <%- include('partials/header') %>
-  
-  
-  <div class="flex flex-col w-full">
-    <div class="divider"></div> 
-  </div>
 
-  <div class="flex flex-row justify-around ">
-    <!--User Info -->
-      <div class="card w-96 py-3 bg-base-100 shadow basis-1/4">
+
+    <div class="flex flex-col w-full">
+      <div class="divider"></div>
+    </div>
+
+    <div class="flex flex-row justify-around ">
+      <!--User Info -->
+      <div class="py-3 shadow card w-96 bg-base-100 basis-1/4">
         <div class="card-body">
-          <h2 class="card-title"><%= user.firstName || user.username %></h2>
-          <p><%= new Date().toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' }) %></p>
+          <h2 class="card-title">
+            <%= user.firstName || user.username %>
+          </h2>
+          <p>
+            <%= new Date().toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' }) %>
+          </p>
         </div>
       </div>
 
 
       <!--Stat area -->
-      <div class="stats shadow basis-1/2">
-  
-        <div class="stat place-items-center">
-          <div class="stat-title">Total Tasks</div>
-          <div class="stat-value"><%=(projectData.length) %></div>
-        </div>
+      <div class="shadow stats basis-1/2">
 
         <div class="stat place-items-center">
-          <div class="stat-title">Completed</div>
-          <div class="stat-value"><%=(projectsInProgress)%></div>
+          <div class="stat-title">Total Tasks</div>
+          <div class="stat-value">
+            <%=(projectData.length) %>
+          </div>
         </div>
 
         <div class="stat place-items-center">
           <div class="stat-title">In Progress</div>
-              <div class="stat-value"><%=(projectsCompleted) %>
-              </div>
+          <div class="stat-value">
+            <%=(projectsInProgress)%>
+          </div>
         </div>
 
         <div class="stat place-items-center">
-          <div class="radial-progress" style="--value:<%=(Math.floor((projectsCompleted / projectData.length) * 100))%>;"><%=(Math.floor((projectsCompleted / projectData.length) * 100))%>%</div>
-      </div>
-        
-        
-<!-- Estimated Time VS Actual Time for completed Items -->
+          <div class="stat-title">Completed</div>
+          <div class="stat-value">
+            <%=(projectsCompleted) %>
+          </div>
+        </div>
+
+        <div class="stat place-items-center">
+          <div class="radial-progress"
+            style="--value:<%=(Math.floor((projectsCompleted / projectData.length) * 100))%>;">
+            <%=(Math.floor((projectsCompleted / projectData.length) * 100))%>%
+          </div>
+        </div>
+
+
+        <!-- Estimated Time VS Actual Time for completed Items -->
         <!-- <div class="stat place-items-center">
           <div class="stat-title">Est / Actual Hrs</div>
           <div class="stat-value"><%=(projectData.estimatedTime) %> / 48</div>
         </div> -->
-        
-      </div>
-<!-- Add Task Button-->
-      <div class="grid content-evenly">
-        <label class=" btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" for="add-task-modal" class="btn modal-button">+ Add Task</label>
-      <!-- <a class=" btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" href="/dashboard/addProject" role="button">+ Add Task</a> -->
-      
-      <!-- Button to add entry to distraction journal -->
-      <!-- <a class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" href="/dashboard/addProject" role="button">+ Add Distraction</a> -->
-      </div>
-  </div>
 
-  <div class="flex flex-col w-full">
-    <div class="divider"></div> 
-  </div>
-  
-    <div class="overflow-x-auto w-full">
+      </div>
+      <!-- Add Task Button-->
+      <div class="grid content-evenly">
+        <label class=" btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" for="add-task-modal"
+          class="btn modal-button">Add Task</label>
+        <!-- <a class=" btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" href="/dashboard/addProject" role="button">+ Add Task</a> -->
+
+        <!-- Button to add entry to distraction journal -->
+        <!-- <a class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg basis-1/4" href="/dashboard/addProject" role="button">+ Add Distraction</a> -->
+      </div>
+    </div>
+
+    <div class="flex flex-col w-full">
+      <div class="divider"></div>
+    </div>
+
+    <div class="w-full overflow-x-auto">
       <table class="table w-full">
         <!-- head -->
         <thead>
@@ -89,109 +103,133 @@
         <tbody>
           <!-- row 1 -->
           <tr>
-            <% projectData.forEach( el => { %>
-            <td>
-              <div class="flex items-center space-x-3">
-                <div>
-                  <div class="font-bold"><%= el.title %></div>
+            <% projectData.forEach( el=> { %>
+              <td>
+                <div class="flex items-center space-x-3">
+                  <div>
+                    <div class="font-bold">
+                      <%= el.title %>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td>
-              <%= el.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit', timeZone:'UTC'}) %>
-              <br>
-              <span class="badge badge-ghost badge-sm">Est To Complete = <%=(el.estimatedTime) %>hrs</span>
-            </td>
+              </td>
+              <td>
+                <%= el.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' ,
+                  timeZone:'UTC'}) %>
+                  <br>
+                  <span class="badge badge-ghost badge-sm">Est To Complete = <%=(el.estimatedTime) %>hrs</span>
+              </td>
 
 
-            
-            <td><% if (el.status === true) { %><div class=" bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Completed <i class="fas fa-check-circle"></i></div>
-                <% } else { %><div class="bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">In Progress</div>
-                <% } %></td>
-                <td ><% if (el.status === true) { %>
-                  <form
-                  action="/dashboard/deleteProject/<%= el._id %>?_method=DELETE"
-                  method="POST">
-                      <button type="submit">Delete</button>
-                  </form>
 
-                  <% } else { %><form class="grid content-evenly"
-                    action="/dashboard/markComplete/<%= el._id %>?_method=PUT"
-                    method="POST">
-                    <button type="submit">Mark Complete</button>
-                    <input for="TotalTime" class="input input-bordered input-xs" type="number" id="TotalTime" name="TotalTime" placeholder="Actual Task Time" required></div>
-                        
+              <td>
+                <% if (el.status===true) { %>
+                  <div
+                    class="w-[110px] bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
+                    Completed <i class="fas fa-check-circle"></i></div>
+                  <% } else { %>
+                    <div
+                      class="w-[110px] bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">
+                      In Progress</div>
+                    <% } %>
+              </td>
+              <td data-id=<%= el.id %>>
+                <div class="w-[200px]">
+                  <% if (el.status===true) { %>
+                    <form class="flex items-center gap-2 w-[200px]" action="/dashboard/markIncomplete/<%= el._id %>?_method=PUT" method="POST">
+                    <input type="checkbox" class="mark-complete-check" name="markComplete" checked>
+                  <% } else { %>
+                    <form class="flex items-center gap-2" action="/dashboard/markComplete/<%= el._id %>?_method=PUT" method="POST">
+                    <input type="checkbox" class="mark-complete-check" name="markComplete">
+                  <% } %>
+                      <input for="TotalTime" class="border-2 border-black border-solid input input-bordered input-xs" type="number" name="TotalTime" placeholder="Actual Task Time" required>
                     </form>
+                  <form action="/dashboard/deleteProject/<%= el._id %>?_method=DELETE" method="POST" class="flex justify-end mt-2 text-xs">
+                    <button type="submit">Delete</button>
+                  </form>
+                </div>
 
-                    <!-- --------MODAL-------- -->
+    <!-- --------MODAL-------- -->
 
-<input type="checkbox" id="modal-edit-project-<%= el._id %>" class="modal-toggle" />
-  <div class="modal flex flex-column justify-around">
-    <div class="modal-box">
-      <h2 class="font-bold text-lg"><%= el.title %></h2>
-          <h3>Deadline: <%= el.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit', timeZone:'UTC'}) %></h3>
-          <p>Description: <%= el.description %></p>
-          <p>Estimated Time: <%= el.estimatedTime %></p>
-          
-          <label class="modal-action" for="modal-edit-project-<%= el._id %>" class="btn">X</label>
-    </div>
-  </div>
-</div>
-                  <% } %></td>
-            <th>
-              <!-- <div class="btn btn-ghost btn-xs"><a class='link-to-project' href="/dashboard/project?_id=<%= el._id %>">details</a>
-              </div> -->
-              <label for="modal-edit-project-<%= el._id %>" class="btn modal-button" data-target="#modal-edit-project-<%= el._id %>">DETAILS</label>
+    <input type="checkbox" id="modal-edit-project-<%= el._id %>" class="modal-toggle" />
+    <div class="flex justify-around modal flex-column">
+      <div class="modal-box">
+        <h2 class="text-lg font-bold">
+          <%= el.title %>
+        </h2>
+        <h3>Deadline: <%= el.dueDate.toLocaleDateString([], { year: 'numeric' , month: 'long' , day: '2-digit' ,
+            timeZone:'UTC'}) %>
+        </h3>
+        <p>Description: <%= el.description %>
+        </p>
+        <p>Estimated Time: <%= el.estimatedTime %>
+        </p>
 
-            </th>
-          </tr>
-          
-          <% }) %>
-          
-        </tbody>
-      </table>
-    </div>
-    <!-- __--__--__MODAL FOR + ADD TASK BUTTON__--__--__ -->
-
-    <input type="checkbox" id="add-task-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box">
-    <div class="flex justify-center">
-      <div class="card w-96 bg-base-100 ">
-        <div class=" card-body">
-          <h2 class="text-3xl mb-2">Add Task</h2>
-          <form action="/projects/addProject" method="POST">
-            <label for="title">
-              Task
-              <input class="input input-bordered w-full max-w-xs" type="text" id="title" name="title" placeholder="Task Item" required>
-            </label>
-            <label for="dueDate">
-              Due Date
-            <input class="input input-bordered w-full max-w-xs" type="date" id="dueDate" name="dueDate" required>
-            </label>
-            <label for="estimatedTime">
-              Estimated Time in Hrs
-            <input class="input input-bordered w-full max-w-xs" type="number" id="estimatedTime" name="estimatedTime" required>
-            </label>
-            <label for="description">
-              Discription
-              <textarea class="textarea textarea-bordered block" type="text" id="description" name="description" placeholder="A brief descripton of your task"
-                required></textarea>
-            </label>
-          <div class="card-actions justify-end">
-            <button class="btn ">+ Add Task</button>
-          </form>
-          </div>
-          <a href="/dashboard" role="button" class="">Back to Dashboard</a>
-        </div>
+        <label class="modal-action" for="modal-edit-project-<%= el._id %>" class="btn">X</label>
       </div>
     </div>
-    <div class="modal-action">
-      <label for="add-task-modal" class="btn">X</label>
     </div>
-  </div>
-</div>
-  
+      </td>
+      <th class="align-top">
+        <!-- <div class="btn btn-ghost btn-xs"><a class='link-to-project' href="/dashboard/project?_id=<%= el._id %>">details</a>
+              </div> -->
+        <label for="modal-edit-project-<%= el._id %>" data-target="#modal-edit-project-<%= el._id %>">Details</label>
+
+      </th>
+      </tr>
+
+      <% }) %>
+
+        </tbody>
+        </table>
+        </div>
+        <!-- __--__--__MODAL FOR + ADD TASK BUTTON__--__--__ -->
+
+        <input type="checkbox" id="add-task-modal" class="modal-toggle" />
+        <div class="modal">
+          <div class="modal-box">
+            <div class="flex justify-center">
+              <div class="card w-96 bg-base-100 ">
+                <div class=" card-body">
+                  <h2 class="mb-2 text-3xl">Add Task</h2>
+                  <form action="/projects/addProject" method="POST">
+                    <label for="title">
+                      Task
+                      <input class="w-full max-w-xs input input-bordered" type="text" id="title" name="title"
+                        placeholder="Task Item" required>
+                    </label>
+                    <label for="dueDate">
+                      Due Date
+                      <input class="w-full max-w-xs input input-bordered" type="date" id="dueDate" name="dueDate"
+                        required>
+                    </label>
+                    <label for="estimatedTime">
+                      Estimated Time in Hrs
+                      <input class="w-full max-w-xs input input-bordered" type="number" id="estimatedTime"
+                        name="estimatedTime" required>
+                    </label>
+                    <label for="description">
+                      Description
+                      <textarea class="block w-full mb-4 textarea textarea-bordered" type="text" id="description"
+                        name="description" placeholder="A brief description of your task" required></textarea>
+                    </label>
+                    <div class="justify-end card-actions">
+                      <button class="btn ">Add Task</button>
+                      <div class="mt-0 modal-action">
+                        <label for="add-task-modal" class="text-[#303640] hover:text-white bg-white btn">Cancel</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- <%- include('partials/footer') %> -->
+
+
           <script src='/js/project.js'></script>
 </body>
+
 </html>

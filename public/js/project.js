@@ -2,13 +2,35 @@
 // console.log(deleteBtn)
 
 // To mark projects as Complete/Incomplete linked to the projectDetail.ejs
-const projectComplete = document.querySelectorAll('.mark-complete-button')
+const projectComplete = document.querySelectorAll('.mark-complete-check')
 
 
 // Functions
 
 // deleteBtn.addEventListener('click', deleteProject)
-projectComplete.map(e => e.addEventListener('click', markComplete))
+projectComplete.forEach(e => e.addEventListener('change', (e) => {
+   const form = e.target.closest('form')
+   if (e.target.checked) {
+    const requiredInputs = form.querySelectorAll("[required]")
+    let valid = true
+    requiredInputs.forEach((input) => {
+     if(!input.value) {
+         valid = false
+     }
+    })
+    if(valid) {
+     form.submit()
+    } else {
+     alert('Please fill out all required fields')
+     e.target.checked = false
+    }
+   } else {
+    form.submit()
+   }
+
+})
+);
+
 
 async function deleteProject(){
     const projectId = this.parentNode.dataset.id
@@ -30,21 +52,21 @@ async function deleteProject(){
 
 async function markComplete(){
     const projectId = this.parentNode.dataset.id
-    console.log(projectId)
-    try{
-        const response = await fetch('markComplete', {
-            method: 'put',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'id': projectId
-            })
-        })
-        const data = await response.text
-        console.log(data)
-        window.location.href = "/dashboard";
-    }catch(err){
-        console.log(err)
-    }
+    // submit the sibling form
+    // try{
+    //     const response = await fetch('markComplete', {
+    //         method: 'PUT',
+    //         headers: {'Content-type': 'application/json'},
+    //         body: JSON.stringify({
+    //             'id': projectId
+    //         })
+    //     })
+    //     const data = await response.text
+    //     console.log(data)
+    //     window.location.href = "/dashboard";
+    // }catch(err){
+    //     console.log(err)
+    // }
 }
 
 async function markIncomplete(){

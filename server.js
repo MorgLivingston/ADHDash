@@ -50,7 +50,7 @@ app.use('/', mainRoutes)
 app.use('/dashboard', dashRoutes)
 app.use('/projects', projectRoutes)
 
- 
-app.listen(process.env.PORT || 8000, ()=>{
-    console.log('Server is running, you better catch it!')
+let PORT = process.env.PORT || 3000
+app.listen(PORT, ()=>{
+    console.log(`Server is running on PORT ${PORT}, you better catch it!`)
 })    

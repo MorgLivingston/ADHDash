@@ -43,17 +43,18 @@ module.exports = {
             console.log(err)
         }
     },
-    // markIncomplete: async (reeq, res) => {
-    //     try {
-    //         await Project.findOneAndUpdate({_id:req.body.id}, {
-    //             status: false
-    //         })
-    //         console.log('Incompleted Task')
-    //         res.json('Incompleted Task')
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // },
+    markIncomplete: async (req, res) => {
+        try {
+            await Project.findOneAndUpdate({_id:req.params.id}, {
+                status: false,
+                TotalTime: req.body.TotalTime,
+            })
+            console.log('Incompleted Task')
+            res.redirect('/dashboard')
+        } catch (err) {
+            console.log(err)
+        }
+    },
     deleteProject: async (req, res) => {
         console.log(req.params.id)
         try {

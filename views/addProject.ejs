@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <%- include('partials/head') %>
   <title>Add Task</title>
@@ -9,28 +9,28 @@
   <!-- Header -->
   <%- include('partials/header') %>
 <div class="flex justify-center">
-  <div class="card w-96 bg-base-100 shadow-xl ">
+  <div class="shadow-xl card w-96 bg-base-100 ">
     <div class=" card-body">
       <h2>Add Task</h2>
       <form action="/projects/addProject" method="POST">
         <label for="title">
           Task
-          <input class="input input-bordered w-full max-w-xs" type="text" id="title" name="title" placeholder="Task Item" required>
+          <input class="w-full max-w-xs input input-bordered" type="text" id="title" name="title" placeholder="Task Item" required>
         </label>
         <label for="dueDate">
           Start Date
-        <input class="input input-bordered w-full max-w-xs" type="date" id="dueDate" name="dueDate" required>
+        <input class="w-full max-w-xs input input-bordered" type="date" id="dueDate" name="dueDate" required>
         </label>
         <label for="estimatedTime">
           Estimated Time in Hrs
-        <input class="input input-bordered w-full max-w-xs" type="number" id="estimatedTime" name="estimatedTime" required>
+        <input class="w-full max-w-xs input input-bordered" type="number" id="estimatedTime" name="estimatedTime" required>
         </label>
         <label for="description">
-          Discription
-          <textarea class="textarea textarea-bordered block" type="text" id="description" name="description" placeholder="A brief descripton of your task"
+          Description
+          <textarea class="block textarea textarea-bordered" type="text" id="description" name="description" placeholder="A brief description of your task"
             required></textarea>
         </label>
-      <div class="card-actions justify-end">
+      <div class="justify-end card-actions">
         <button class="btn btn-primary">+ Add Task</button>
       </form>
       </div>
